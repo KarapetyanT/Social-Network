@@ -1,4 +1,3 @@
-
 import { useForm } from "react-hook-form";
 import { useHttpMutation, METHODS } from "../../../helpers/useHttp";
 import { IPassword, IResponse } from "../../../helpers/types";
@@ -22,7 +21,7 @@ export const UpdatePassword = () => {
       theme: "dark",
     });
     setTimeout(() => {
-      navigate("/profile");
+      navigate("/");
     }, 5000);
   });
 
@@ -37,33 +36,33 @@ export const UpdatePassword = () => {
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <div>
           <label
-            htmlFor="oldPassword"
+            htmlFor="old"
             className="block text-sm font-medium text-gray-300"
           >
             Old Password
           </label>
           <input
-            id="oldPassword"
+            id="old"
             type="password"
             className="w-full mt-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
-            {...register("oldPassword", { required: "Please provide your old password" })}
+            {...register("old", { required: "Please provide your old password" })}
           />
-          {errors.oldPassword && (
-            <p className="text-red-400 text-xs mt-1">{errors.oldPassword.message}</p>
+          {errors.old && (
+            <p className="text-red-400 text-xs mt-1">{errors.old.message}</p>
           )}
         </div>
         <div>
           <label
-            htmlFor="newPassword"
+            htmlFor="newpwd"
             className="block text-sm font-medium text-gray-300"
           >
             New Password
           </label>
           <input
-            id="newPassword"
+            id="newpwd"
             type="password"
             className="w-full mt-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
-            {...register("newPassword", {
+            {...register("newpwd", {
               required: "Please provide a new password",
               minLength: {
                 value: 8,
@@ -71,8 +70,8 @@ export const UpdatePassword = () => {
               },
             })}
           />
-          {errors.newPassword && (
-            <p className="text-red-400 text-xs mt-1">{errors.newPassword.message}</p>
+          {errors.newpwd && (
+            <p className="text-red-400 text-xs mt-1">{errors.newpwd.message}</p>
           )}
         </div>
         <button

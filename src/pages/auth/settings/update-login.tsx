@@ -22,7 +22,7 @@ export const UpdateLogin = () => {
       theme: "dark",
     });
     setTimeout(() => {
-      navigate("/profile");
+      navigate("/");
     }, 5000);
   });
 
@@ -37,34 +37,34 @@ export const UpdateLogin = () => {
         {error && <p className="text-red-500 text-sm">{error}</p>}
         <div>
           <label
-            htmlFor="oldLogin"
+            htmlFor="password"
             className="block text-sm font-medium text-gray-300"
           >
-            Old Login
+            Provide password to change your Login
           </label>
           <input
-            id="oldLogin"
-            type="text"
+            id="password"
+            type="password"
             className="w-full mt-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
-            {...register("oldLogin", { required: "Please provide your old login" })}
+            {...register("password", { required: "Please provide your old login" })}
           />
-          {errors.oldLogin && (
-            <p className="text-red-400 text-xs mt-1">{errors.oldLogin.message}</p>
+          {errors.password && (
+            <p className="text-red-400 text-xs mt-1">{errors.password.message}</p>
           )}
         </div>
         <div>
           <label
-            htmlFor="newLogin"
+            htmlFor="login"
             className="block text-sm font-medium text-gray-300"
           >
             New Login
           </label>
           <input
-            id="newLogin"
+            id="login"
             type="text"
             className="w-full mt-1 px-4 py-2 bg-gray-700 border border-gray-600 rounded-lg text-gray-100 placeholder-gray-400 focus:ring-blue-500 focus:border-blue-500"
             {
-              ...register("newLogin", {
+              ...register("login", {
                 required: "Please provide a new login",
                 minLength: {
                   value: 8,
@@ -73,8 +73,8 @@ export const UpdateLogin = () => {
               })
             }            
           />
-          {errors.newLogin && (
-            <p className="text-red-400 text-xs mt-1">{errors.newLogin.message}</p>
+          {errors.login && (
+            <p className="text-red-400 text-xs mt-1">{errors.login.message}</p>
           )}
         </div>
         <button
