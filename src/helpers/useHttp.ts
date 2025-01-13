@@ -14,13 +14,14 @@ interface IQuery<T> {
 export enum METHODS {
     GET, POST, DELETE, PUT, PATCH
 }
-export const useHttpQuery = <ReturnType>(url: string): IQuery<ReturnType> => {
+export const useHttpQuery = <ReturnType>(url: string, mount: boolean = true): IQuery<ReturnType> => {
     const [data, setData] = useState<ReturnType | null>(null)
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(mount)
     const [error, setError] = useState("")
     const navigate = useNavigate()
 
     const refetch = () => {
+        setLoading(true)
         Http
             .get(url)
             .then(response => {
@@ -39,6 +40,7 @@ export const useHttpQuery = <ReturnType>(url: string): IQuery<ReturnType> => {
 
 
     useEffect(() => {
+        if (!mount) return
         refetch()
     }, [])
 
@@ -77,7 +79,7 @@ export const useHttpMutation = <ReturnType, PayloadType = null>(onSuccess: (() =
                 break;
         }
 
-         invocation
+        invocation
             .then(response => {
                 setData(response.data)
                 setError("")
@@ -85,7 +87,7 @@ export const useHttpMutation = <ReturnType, PayloadType = null>(onSuccess: (() =
             })
             .catch(err => {
                 console.log(err)
-                setError(err.response?.data?.message)
+                setError(err.message + ": " + err.response?.data?.message)
             })
             .finally(() => {
                 setLoading(false)

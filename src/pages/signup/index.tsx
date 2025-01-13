@@ -48,7 +48,7 @@ export const Signup = () => {
                     </div>
                     <div className="mb-4">
                         <label
-                            htmlFor="email"
+                            htmlFor="text"
                             className="block text-sm font-medium text-gray-300 mb-1"
                         >
                             Login
