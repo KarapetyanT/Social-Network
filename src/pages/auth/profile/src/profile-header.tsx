@@ -3,8 +3,14 @@ import { IContext, IResponse } from "../../../../helpers/types";
 import { useRef, useState } from "react";
 import { Http } from "../../../../helpers/api";
 import { BASE_URL } from "../../../../helpers/constants";
+import { IPost } from "../../../../helpers/types";
 
-export const ProfileHeader = () => {
+
+interface IProps {
+    posts: IPost[];
+  }
+export const ProfileHeader = ({posts} : IProps) => {
+  
   const { user, refetch } = useOutletContext<IContext>();
   const photo = useRef<null | HTMLInputElement>(null)
   const [preview, setPreview] = useState("")
@@ -94,7 +100,7 @@ export const ProfileHeader = () => {
               <p className="text-gray-400 text-sm">Following</p>
           </div>
           <div className="flex flex-col">
-              <p className="text-sm font-bold text-blue-400">0</p>
+              <p className="text-sm font-bold text-blue-400">{posts?.length || 0}</p>
               <p className="text-gray-400 text-sm">Posts</p>
           </div>
       </div>

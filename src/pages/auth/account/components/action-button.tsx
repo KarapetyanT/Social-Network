@@ -15,20 +15,27 @@ export const ActionButton: React.FC = () => {
   const handleRequest = () => {
     makeRequest("/account/follow/" + account.id, METHODS.POST);
   };
+
   return (
-    <>
-      <button
-        onClick={handleRequest}
-        className="px-2 py-1 my-2 rounded-md bg-pink-500"
-      >
-        {following
-          ? "unfollow"
+    <button
+      onClick={handleRequest}
+      className={`px-4 py-2 rounded-lg font-semibold transition duration-300 ${
+        following
+          ? "bg-red-500 hover:bg-red-600 text-white"
           : followsMe
-          ? "follow back"
+          ? "bg-blue-500 hover:bg-blue-600 text-white"
           : requested
-          ? "cancel"
-          : "follow"}
-      </button>
-    </>
+          ? "bg-gray-400 hover:bg-gray-500 text-black"
+          : "bg-pink-500 hover:bg-pink-600 text-white"
+      }`}
+    >
+      {following
+        ? "Unfollow"
+        : followsMe
+        ? "Follow back"
+        : requested
+        ? "Cancel"
+        : "Follow"}
+    </button>
   );
 };

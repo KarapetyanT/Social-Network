@@ -1,5 +1,6 @@
 import { UpdateLogin } from "./update-login";
 import { UpdatePassword } from "./update-password";
+import { PrivatePublic } from "./private-public";
 
 export const Settings = () => {
   return (
@@ -8,6 +9,8 @@ export const Settings = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
         <UpdateLogin />
         <UpdatePassword />
+        <PrivatePublic />
+
       </div>
     </div>
   );

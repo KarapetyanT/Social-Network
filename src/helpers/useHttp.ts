@@ -87,7 +87,7 @@ export const useHttpMutation = <ReturnType, PayloadType = null>(onSuccess: (() =
             })
             .catch(err => {
                 console.log(err)
-                setError(err.message + ": " + err.response?.data?.message)
+                setError(err.response?.data?.message)
             })
             .finally(() => {
                 setLoading(false)

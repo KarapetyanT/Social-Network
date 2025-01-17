@@ -9,6 +9,7 @@ export const Layout = () => {
         { name: 'Settings', href: '/profile/settings' },
         { name: 'Followers', href: '/profile/followers' },
         { name: 'Followings', href: '/profile/followings' },
+        { name: 'Requests', href: '/profile/requests' },
         { name: 'Messages', href: '/profile/messages' },
     ];
     const navigate = useNavigate()

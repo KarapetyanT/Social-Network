@@ -24,6 +24,7 @@ export const Account = () => {
     account && (
       <AccountContext.Provider value={{ account, refetch }}>
         <AccountHeader />
+      
       </AccountContext.Provider>
     )
   );
