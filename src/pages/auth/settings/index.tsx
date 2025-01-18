@@ -10,7 +10,6 @@ export const Settings = () => {
         <UpdateLogin />
         <UpdatePassword />
         <PrivatePublic />
-
       </div>
     </div>
   );

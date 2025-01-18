@@ -4,7 +4,6 @@ import { BASE_URL } from "../../helpers/constants";
 import { useState } from "react";
 import Modal from "react-modal";
 
-
 const customStyles = {
   content: {
     top: "50%",
@@ -16,7 +15,7 @@ const customStyles = {
     width: 400,
     height: 200,
     background: "gray",
-    borderRadius: "0.5rem", 
+    borderRadius: "0.5rem",
     padding: "1rem",
   },
 };
@@ -29,7 +28,9 @@ export const Gallery = () => {
     ? (data.payload as IPost[])
     : null;
 
-  const [deletePost] = useHttpMutation<IResponse>(() => {refetch()});
+  const [deletePost] = useHttpMutation<IResponse>(() => {
+    refetch();
+  });
 
   const handleDelete = (id: number) => {
     deletePost(`/posts/${id}`, METHODS.DELETE);

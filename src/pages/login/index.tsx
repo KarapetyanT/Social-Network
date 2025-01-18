@@ -4,32 +4,40 @@ import { IAuth, IResponse } from "../../helpers/types";
 import { METHODS, useHttpMutation } from "../../helpers/useHttp";
 
 export const Login = () => {
-  const navigate = useNavigate()
-  const { register, handleSubmit, formState: { errors } } = useForm<IAuth>()
-  const [postLogin, error] = useHttpMutation<IResponse, IAuth>(() => navigate('/profile'))
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IAuth>();
+  const [postLogin, error] = useHttpMutation<IResponse, IAuth>(() =>
+    navigate("/profile")
+  );
 
-  const handleLogin: SubmitHandler<IAuth> = data => {
-    postLogin("/login", METHODS.POST, data)
-  }
+  const handleLogin: SubmitHandler<IAuth> = (data) => {
+    postLogin("/login", METHODS.POST, data);
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 flex items-center justify-center p-4">
       <div className="max-w-md w-full bg-gray-800 rounded-lg shadow-lg p-6">
-        <h2 className="text-3xl font-bold text-white text-center">Welcome Back</h2>
+        <h2 className="text-3xl font-bold text-white text-center">
+          Welcome Back
+        </h2>
         <p className="text-gray-400 text-center mt-2">Login to continue</p>
         <form className="mt-6" onSubmit={handleSubmit(handleLogin)}>
-          {error && <p className="text-red-400">{error}</p>} 
+          {error && <p className="text-red-400">{error}</p>}
           <div className="mb-4">
-            <label
-              className="block text-sm font-medium text-gray-300 mb-1"
-            >
+            <label className="block text-sm font-medium text-gray-300 mb-1">
               Login
             </label>
-            {errors.login && <p className="text-red-400">{errors.login.message}</p>}
+            {errors.login && (
+              <p className="text-red-400">{errors.login.message}</p>
+            )}
             <input
               type="email"
               id="email"
-              {...register("login", { required: 'please fill login' })}
+              {...register("login", { required: "please fill login" })}
               placeholder="Enter your email"
               className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
@@ -41,10 +49,14 @@ export const Login = () => {
             >
               Password
             </label>
-            {errors.password && <p className="text-red-400">{errors.password.message}</p>}
+            {errors.password && (
+              <p className="text-red-400">{errors.password.message}</p>
+            )}
             <input
               type="password"
-              {...register("password", { required: 'please fill your password' })}
+              {...register("password", {
+                required: "please fill your password",
+              })}
               id="password"
               placeholder="Enter your password"
               className="w-full px-4 py-2 rounded-lg bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -64,10 +76,8 @@ export const Login = () => {
               Sign Up
             </Link>
           </p>
-
         </div>
       </div>
     </div>
   );
 };
-

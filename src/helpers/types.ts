@@ -10,7 +10,6 @@ export interface IUser {
     following: IUser[]
     posts: IPost[]
     
-
 }
 
 export interface IAccount extends IUser {

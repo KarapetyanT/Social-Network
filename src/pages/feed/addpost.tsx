@@ -3,10 +3,6 @@ import { useHttpMutation, METHODS } from "../../helpers/useHttp";
 import { IPost, IContext } from "../../helpers/types";
 import { useOutletContext } from "react-router-dom";
 
-
-
-
-
 export const AddPost = () => {
   const [showForm, setShowForm] = useState(false);
   const [content, setContent] = useState("");
@@ -101,5 +97,3 @@ export const AddPost = () => {
     </div>
   );
 };
-
-

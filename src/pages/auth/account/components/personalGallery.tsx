@@ -9,17 +9,11 @@ interface IProps {
   isPrivate: number;
 }
 
-export const PersonalGallery = ({ posts, isPrivate}: IProps) => {
+export const PersonalGallery = ({ posts, isPrivate }: IProps) => {
   const [personalPosts, setPersonalPosts] = useState(posts);
-  
- 
 
   if (!personalPosts?.length || isPrivate === 1) {
-    return (
-      <p className="text-center text-gray-1000">
-        No posts available!
-      </p>
-    );
+    return <p className="text-center text-gray-1000">No posts available!</p>;
   }
 
   const [didILike] = useHttpMutation<IResponse>(() => {});
